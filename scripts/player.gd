@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		if i > temp.size() -1:
 			i = 0
 		changeGravity(temp[i])
-		print("now up is: ", temp)
+		print("now up is uhm: ", temp)
 
 func changeGravity(gDirection: Vector2i) -> void:
 	if(gravityDirection != gDirection):
