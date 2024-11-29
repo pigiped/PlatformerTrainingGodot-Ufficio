@@ -12,17 +12,10 @@ const JUMP_VELOCITY = -300.0
 var gravityDirection = Vector2i.DOWN
 var slipness := false
 
-var temp = [Vector2i.DOWN, Vector2i.UP, Vector2i.LEFT, Vector2i.RIGHT]
-var i = 0
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("test"):
-		i += 1
-		if i > temp.size() -1:
-			i = 0
-		changeGravity(temp[i])
-		print("now up is uhm: ", temp)
+func _ready() -> void:
+	SignalBus.connect("gravity_changed", _on_gravity_changed)
 
-func changeGravity(gDirection: Vector2i) -> void:
+func _on_gravity_changed(gDirection: Vector2i) -> void:
 	if(gravityDirection != gDirection):
 		gravityDirection = gDirection
 		set_up_direction(Vector2(gDirection.x, -gDirection.y))
