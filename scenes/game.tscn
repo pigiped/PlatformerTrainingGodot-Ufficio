@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dvo8ie68g83xw"]
+[gd_scene load_steps=31 format=3 uid="uid://dvo8ie68g83xw"]
 
 [ext_resource type="PackedScene" uid="uid://cebriycvh7wfh" path="res://scenes/player.tscn" id="1_uk2dr"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_yi1dk"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://blkjlgn7j6vvr" path="res://scenes/change_gravity.tscn" id="12_hh4ta"]
 [ext_resource type="PackedScene" uid="uid://ctr47sbdegvm3" path="res://scenes/change_gravity_up.tscn" id="12_ro8u6"]
 [ext_resource type="PackedScene" uid="uid://13ejaimgwhni" path="res://scenes/jump_platform.tscn" id="13_0o5i1"]
-[ext_resource type="PackedScene" uid="uid://beuadofs5fmj7" path="res://scenes/slime_flipped.tscn" id="15_ucyvg"]
+[ext_resource type="PackedScene" uid="uid://s137au84mupy" path="res://scenes/flying_slime.tscn" id="15_cjcim"]
 [ext_resource type="PackedScene" uid="uid://metcw5qskuyf" path="res://scenes/ui.tscn" id="16_ve4de"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aldl5"]
@@ -298,6 +298,43 @@ _data = {
 "move": SubResource("Animation_1xkcw")
 }
 
+[sub_resource type="Animation" id="Animation_vdq5n"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(681, -65), Vector2(681, -15)]
+}
+
+[sub_resource type="Animation" id="Animation_7yipv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(684, -56)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ripw5"]
+_data = {
+"RESET": SubResource("Animation_7yipv"),
+"move": SubResource("Animation_vdq5n")
+}
+
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -305,7 +342,7 @@ unique_name_in_owner = true
 script = ExtResource("1_yi1dk")
 
 [node name="Player" parent="." instance=ExtResource("1_uk2dr")]
-position = Vector2(1841, -314)
+position = Vector2(594, -39)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -8)
@@ -437,18 +474,6 @@ libraries = {
 "": SubResource("AnimationLibrary_3ddsm")
 }
 
-[node name="slime4" parent="." instance=ExtResource("15_ucyvg")]
-position = Vector2(1851, -193)
-
-[node name="slime" parent="." instance=ExtResource("6_px8bp")]
-position = Vector2(242, 53)
-
-[node name="slime2" parent="." instance=ExtResource("6_px8bp")]
-position = Vector2(527, -235)
-
-[node name="slime3" parent="." instance=ExtResource("6_px8bp")]
-position = Vector2(569, 165)
-
 [node name="Labels" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="Labels"]
@@ -498,3 +523,21 @@ position = Vector2(768, -18)
 
 [node name="jump_platform3" parent="JumpPlatforms" instance=ExtResource("13_0o5i1")]
 position = Vector2(912, -18)
+
+[node name="slime" parent="." instance=ExtResource("6_px8bp")]
+position = Vector2(245, 53)
+
+[node name="slime2" parent="." instance=ExtResource("6_px8bp")]
+position = Vector2(514, 165)
+
+[node name="slime3" parent="." instance=ExtResource("6_px8bp")]
+position = Vector2(521, -235)
+
+[node name="flying_slime" parent="." instance=ExtResource("15_cjcim")]
+position = Vector2(684, -56)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="flying_slime"]
+libraries = {
+"": SubResource("AnimationLibrary_ripw5")
+}
+autoplay = "move"
