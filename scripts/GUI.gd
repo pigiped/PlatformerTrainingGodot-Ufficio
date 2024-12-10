@@ -10,6 +10,8 @@ func _ready() -> void:
 func update_score(value):
 	score += value
 	add_coin()
+	if(score == 18):
+		print("game over")
 	
 func add_coin():
 	var coinTextureRec = TextureRect.new()
