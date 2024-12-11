@@ -12,6 +12,7 @@ var gravityDirection = Vector2i.DOWN
 var slipness := false
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	SignalBus.connect("gravity_changed", _on_gravity_changed)
 	position = GameManager.player_pos
 

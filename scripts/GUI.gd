@@ -19,6 +19,7 @@ func update_score(name):
 	if(score == 18):
 		Engine.time_scale = 0.5
 		await get_tree().create_timer(1).timeout
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
 func add_coin():

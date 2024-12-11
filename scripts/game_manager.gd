@@ -1,7 +1,7 @@
 extends Node
 
-#var player_pos: Vector2i = Vector2i(-31,-31)
-var player_pos: Vector2i = Vector2i(912,-31)
+var player_pos: Vector2i = Vector2i(-31,-31)
+#var player_pos: Vector2i = Vector2i(912,-31)
 var checkpoint_player_pos: Vector2i = Vector2i(1100,-60)
 var deaths: int = 0
 var saved_score: int = 0

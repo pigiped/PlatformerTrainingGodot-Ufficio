@@ -65,13 +65,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -222.0
-offset_top = -66.0
-offset_right = 222.0
-offset_bottom = 232.0
+offset_left = -195.0
+offset_top = -79.0
+offset_right = 195.0
+offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 27
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -86,20 +86,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cy177")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xcqoo")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8crpx")
 text = "Start game"
-
-[node name="Button2" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 45
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ofe37")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cy177")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xcqoo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_8crpx")
-text = "Options"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -138,5 +124,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
