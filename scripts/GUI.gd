@@ -5,14 +5,15 @@ var score = 0
 @onready var h_flow_container: HFlowContainer = $Control/HFlowContainer
 
 func _ready() -> void:
-	SignalBus.coin_picked.connect(update_score.bind())
+	SignalBus.connect("coin_picked",update_score)
 	SignalBus.connect("checkpoint", _on_checkpoint)
 	set_score(GameManager.saved_score)
 	
 func _on_checkpoint() -> void:
 	GameManager._save_score(score)
 	
-func update_score():
+func update_score(name):
+	print("updated score +1")
 	score += 1
 	add_coin()
 	if(score == 18):
