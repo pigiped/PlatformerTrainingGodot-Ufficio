@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnpbuautve0qr"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3qfh2"]
+[ext_resource type="Texture2D" uid="uid://b18xhvcg84kpc" path="res://assets/sprites/BackgroundTitle.PNG" id="2_wgn50"]
+[ext_resource type="FontFile" uid="uid://bam26mh4dmb2g" path="res://assets/fonts/Pixellari.ttf" id="3_pr6mb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5f6g"]
+texture = ExtResource("2_wgn50")
+modulate_color = Color(0.582376, 0.582376, 0.582376, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofe37"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy177"]
+bg_color = Color(0.74698, 0.74698, 0.746979, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.435294)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcqoo"]
+bg_color = Color(0.539663, 0.539663, 0.539663, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.435294)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8crpx"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.435294)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3qfh2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s5f6g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -66.0
+offset_right = 222.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ofe37")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cy177")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xcqoo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8crpx")
+text = "Restart"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ofe37")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cy177")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xcqoo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8crpx")
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -386.5
+offset_top = -266.0
+offset_right = 386.5
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/font = ExtResource("3_pr6mb")
+theme_override_font_sizes/font_size = 136
+text = "Congratulations!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]

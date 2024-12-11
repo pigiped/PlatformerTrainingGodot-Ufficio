@@ -8,12 +8,12 @@ const JUMP_VELOCITY = -300.0
 @onready var ray_cast: RayCast2D = $RayCast2D
 @onready var tile_map: TileMap = %TileMap
 
-
 var gravityDirection = Vector2i.DOWN
 var slipness := false
 
 func _ready() -> void:
 	SignalBus.connect("gravity_changed", _on_gravity_changed)
+	position = GameManager.player_pos
 
 func _on_gravity_changed(gDirection: Vector2i) -> void:
 	if(gravityDirection != gDirection):
@@ -43,6 +43,10 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		Jump(JUMP_VELOCITY)
+		
+	if(Input.is_key_pressed(KEY_F)):
+		position = GameManager._get_player_pos()
+		print(str(position) + " " + str(GameManager._get_player_pos()))
 	
 	# Handle input
 	var direction = Input.get_axis("move_left", "move_right")

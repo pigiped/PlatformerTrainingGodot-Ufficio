@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Music="*res://scenes/music.tscn"
 SignalBus="*res://scripts/SignalBus.gd"
+GameManager="*res://scripts/game_manager.gd"
 
 [input]
 
