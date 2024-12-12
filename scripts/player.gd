@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -300.0
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var ray_cast: RayCast2D = $RayCast2D
 @onready var tile_map: TileMap = %TileMap
+@onready var coyote_timer: Timer = $CoyoteTimer
 
 var gravityDirection = Vector2i.DOWN
 var slipness := false
@@ -42,12 +43,8 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta * gravityDirection.y
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() or Input.is_action_just_pressed("jump") and !coyote_timer.is_stopped():
 		Jump(JUMP_VELOCITY)
-		
-	if(Input.is_key_pressed(KEY_F)):
-		position = GameManager._get_player_pos()
-		print(str(position) + " " + str(GameManager._get_player_pos()))
 	
 	# Handle input
 	var direction = Input.get_axis("move_left", "move_right")
@@ -79,5 +76,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, 1)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
+	var was_on_flooor = is_on_floor()
+	
 	move_and_slide()
+	
+	if was_on_flooor && !is_on_floor():
+		print("coyote timer started...")
+		coyote_timer.start()
