@@ -294,6 +294,7 @@ layer_2/tile_data = PackedInt32Array(524314, 786432, 0, 458778, 786432, 0, 52431
 
 [node name="killzone" parent="." instance=ExtResource("5_75bvi")]
 position = Vector2(40, 319)
+world_edge = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 position = Vector2(-6, 102)
@@ -302,6 +303,7 @@ shape = SubResource("WorldBoundaryShape2D_dfqh7")
 [node name="killzoneTop" parent="." instance=ExtResource("5_75bvi")]
 position = Vector2(118, -361)
 rotation = -3.14159
+world_edge = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzoneTop"]
 position = Vector2(0, 51)
